@@ -5,12 +5,7 @@ requests
 fastapi
 uvicorn
 pydantic
-streamlit
 requests
-fastapi
-uvicorn
 numpy
 scikit-learn
 joblib
-
-
