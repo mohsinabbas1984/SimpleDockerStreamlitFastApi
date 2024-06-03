@@ -1,0 +1,30 @@
+version: '3.8'  # Or a newer version if you prefer
+
+services:
+  backend:
+    build:
+      context: ./backend  # Build context is the backend directory
+      dockerfile: Dockerfile  # Explicitly specify the Dockerfile name
+    volumes:
+      - ./backend:/app/backend  # Mount the backend directory
+    ports:
+      - "8000:8000"
+    networks:
+      - iris_network
+
+  frontend:
+    build:
+      context: ./frontend  # Build context is the frontend directory
+      dockerfile: Dockerfile  # Explicitly specify the Dockerfile name
+    volumes:
+      - ./frontend:/app/frontend  # Mount the frontend directory
+    ports:
+      - "8501:8501"
+    networks:
+      - iris_network
+    depends_on:
+      - backend
+
+networks:
+  iris_network:
+    driver: bridge
